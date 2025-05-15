@@ -2,43 +2,67 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact Us - Nexus Consultants</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact Us - Nexus Labour Relation Consultants</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-<header class="text-center bg-primary text-white py-4">
-  <h1>Contact Nexus Consultants</h1>
-  <p>Get in touch with us for reliable workplace solutions</p>
-</header>
-
-<section class="section container py-5">
-  <h3 class="text-center mb-4">Send Us a Message</h3>
-  <form class="row g-3">
+<div class="container py-5">
+  <h2 class="text-center mb-4">Contact Us</h2>
+  <form id="contact-form" class="row g-3 mx-auto" style="max-width: 700px;">
     <div class="col-md-6">
       <label for="name" class="form-label">Full Name</label>
-      <input type="text" class="form-control" id="name" required>
+      <input name="name" type="text" class="form-control" id="name" required>
     </div>
     <div class="col-md-6">
       <label for="email" class="form-label">Email</label>
-      <input type="email" class="form-control" id="email" required>
+      <input name="email" type="email" class="form-control" id="email" required>
     </div>
     <div class="col-12">
       <label for="message" class="form-label">Message</label>
-      <textarea class="form-control" id="message" rows="5" required></textarea>
+      <textarea name="message" class="form-control" id="message" rows="5" required></textarea>
     </div>
     <div class="col-12 text-center">
       <button type="submit" class="btn btn-primary">Submit</button>
     </div>
   </form>
-</section>
 
-<footer class="text-white text-center py-3" style="background-color:#004080;">
-  <p>&copy; 2025 Nexus Labour Relation Consultants. All rights reserved.</p>
-</footer>
+  <div id="form-response" class="text-center mt-4"></div>
+</div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  const scriptURL = 'https://script.google.com/macros/s/YOUR_WEB_APP_ID_HERE/exec'; // replace with your actual script URL
+  const form = document.getElementById('contact-form');
+  const responseBox = document.getElementById('form-response');
+
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    const payload = {
+      name: form.name.value,
+      email: form.email.value,
+      message: form.message.value
+    };
+
+    fetch(scriptURL, {
+      method: 'POST',
+      body: JSON.stringify(payload),
+      headers: { 'Content-Type': 'application/json' }
+    })
+    .then(res => res.json())
+    .then(data => {
+      if (data.result === 'success') {
+        responseBox.innerHTML = '<div class="alert alert-success">Thank you! Your message was sent successfully.</div>';
+        form.reset();
+      } else {
+        responseBox.innerHTML = '<div class="alert alert-danger">Error: ' + data.message + '</div>';
+      }
+    })
+    .catch(error => {
+      responseBox.innerHTML = '<div class="alert alert-danger">Submission failed: ' + error + '</div>';
+    });
+  });
+</script>
+
 </body>
 </html>
