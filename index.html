@@ -84,7 +84,7 @@
   </div>
 
   <!-- Overlay Text -->
-  <div id="hero-text" class="position-absolute top-50 start-50 translate-middle text-white text-center px-3">
+  <div id="hero-text" class="position-absolute top-50 start-50 translate-middle text-white text-center px-3" style="display: none;">
     <h2 class="fw-bold">Empowering Workplaces Across Canada</h2>
     <p class="lead">Your trusted partner for employment and labour solutions.</p>
     <a href="contact.html" class="btn btn-light mt-3">Contact Us</a>
@@ -120,16 +120,15 @@
   const slides = carousel.querySelectorAll('.carousel-item');
   let currentIndex = 0;
 
-  // Hide text when page loads
+  // Hero text starts hidden
   heroText.style.display = "none";
 
   carousel.addEventListener('slid.bs.carousel', function () {
     currentIndex++;
-    if (currentIndex >= slides.length - 1) {
-      // Re-show text after final slide
+    if (currentIndex === slides.length - 1) {
       setTimeout(() => {
         heroText.style.display = "block";
-      }, 3000); // match carousel interval
+      }, 3000); // delay to match final slide duration
     }
   });
 </script>
