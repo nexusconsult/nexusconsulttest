@@ -32,16 +32,16 @@
 </div>
 
 <script>
-  const scriptURL = https://script.google.com/macros/s/AKfycbw_tMxmRJRMBuexxkz2OlEd8Uw_q0lcXTnZZGf6Ooj9t7gy-ISXwx_ryCI3weRtXBOMog/exec; // replace with your actual script URL
+  const scriptURL = "https://script.google.com/macros/s/AKfycbzg9XIoasB8F7qkhU-lGAE08P5_j1ylzMfehhy2ITHUil5XEMiZMShcytqSf82fs2071Q/exec";
   const form = document.getElementById('contact-form');
   const responseBox = document.getElementById('form-response');
 
   form.addEventListener('submit', e => {
     e.preventDefault();
     const payload = {
-      name: form.name.value,
-      email: form.email.value,
-      message: form.message.value
+      name: form.name.value.trim(),
+      email: form.email.value.trim(),
+      message: form.message.value.trim()
     };
 
     fetch(scriptURL, {
@@ -55,11 +55,11 @@
         responseBox.innerHTML = '<div class="alert alert-success">Thank you! Your message was sent successfully.</div>';
         form.reset();
       } else {
-        responseBox.innerHTML = '<div class="alert alert-danger">Error: ' + data.message + '</div>';
+        responseBox.innerHTML = '<div class="alert alert-danger">Error: ' + data.error + '</div>';
       }
     })
     .catch(error => {
-      responseBox.innerHTML = '<div class="alert alert-danger">Submission failed: ' + error + '</div>';
+      responseBox.innerHTML = '<div class="alert alert-danger">Submission failed: ' + error.message + '</div>';
     });
   });
 </script>
