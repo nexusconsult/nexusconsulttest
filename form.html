@@ -1,19 +1,109 @@
-<form action="https://docs.google.com/forms/d/e/1FAIpQLScLrTxm5vloVe1uqqmvMf-UoSws5IyGcMUTU3Qwd4sYZa5WEg/formResponse" method="POST" target="hidden_iframe" onsubmit="showThankYou(); return true;">
-  <input type="text" name="entry.1440167165" placeholder="First Name" required><br>
-  <input type="text" name="entry.1571461235" placeholder="Last Name" required><br>
-  <input type="email" name="entry.1202421406" placeholder="Email" required><br>
-  <textarea name="entry.1078669474" placeholder="Additional Info" required></textarea><br>
-  <button type="submit">Submit</button>
-</form>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Submit Form - Nexus</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    #thankYouMessage {
+      display: none;
+    }
+  </style>
+</head>
+<body>
 
-<iframe name="hidden_iframe" style="display:none;"></iframe>
-<div id="thankYou" style="display:none;">
-  <h3>Submission recorded. Thank you!</h3>
-</div>
+<header class="text-center bg-primary text-white py-4">
+  <h1>Free Consultation</h1>
+  <p>Fill out the form below to submit your inquiry or details</p>
+</header>
+
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #0056b3;">
+  <div class="container-fluid">
+    <a class="navbar-brand text-white fw-bold" href="index.html">Nexus</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-between" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown">About Us</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="about.html">Who We Are</a></li>
+            <li><a class="dropdown-item" href="team.html">Our Team</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown">Services</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="training.html">Training</a></li>
+            <li><a class="dropdown-item" href="recruitment.html">Recruitment</a></li>
+            <li><a class="dropdown-item" href="conflict.html">Conflict Management</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown">Events</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="upcoming.html">Upcoming</a></li>
+            <li><a class="dropdown-item" href="past.html">Past</a></li>
+          </ul>
+        </li>
+        <li class="nav-item"><a class="nav-link text-white" href="contact.html">Contact Us</a></li>
+      </ul>
+      <div class="d-flex align-items-center">
+        <a href="form.html" class="btn btn-danger me-3">Free Consultation</a>
+        <a href="cart.html" class="text-white me-3"><i class="bi bi-cart" style="font-size: 1.5rem;"></i></a>
+        <a href="login.html" class="text-white"><i class="bi bi-person-circle" style="font-size: 1.5rem;"></i> Log In</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<section class="section container py-5">
+  <form id="customForm" class="row g-3"
+        action="https://docs.google.com/forms/d/e/1FAIpQLScLrTxm5vloVe1uqqmvMf-UoSws5IyGcMUTU3Qwd4sYZa5WEg/formResponse"
+        method="POST" target="hidden_iframe" onsubmit="showThankYou();">
+    <div class="col-md-6">
+      <label for="firstName" class="form-label">First Name</label>
+      <input type="text" name="entry.2005620554" class="form-control" id="firstName" required>
+    </div>
+    <div class="col-md-6">
+      <label for="lastName" class="form-label">Last Name</label>
+      <input type="text" name="entry.1767597869" class="form-control" id="lastName" required>
+    </div>
+    <div class="col-12">
+      <label for="email" class="form-label">Email Address</label>
+      <input type="email" name="entry.1045781291" class="form-control" id="email" required>
+    </div>
+    <div class="col-12">
+      <label for="details" class="form-label">Additional Information</label>
+      <textarea name="entry.1166974658" class="form-control" id="details" rows="4" required></textarea>
+    </div>
+    <div class="col-12 text-center">
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+  </form>
+
+  <iframe name="hidden_iframe" style="display:none;"></iframe>
+
+  <div id="thankYouMessage" class="text-center mt-5">
+    <h3>Submission recorded. Thank you!</h3>
+  </div>
+</section>
+
+<footer class="text-white text-center py-3" style="background-color:#004080;">
+  <p>&copy; 2025 Nexus Labour Relation Consultants. All rights reserved.</p>
+</footer>
 
 <script>
   function showThankYou() {
-    document.querySelector('form').style.display = 'none';
-    document.getElementById('thankYou').style.display = 'block';
+    document.getElementById("customForm").style.display = "none";
+    document.getElementById("thankYouMessage").style.display = "block";
   }
 </script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
