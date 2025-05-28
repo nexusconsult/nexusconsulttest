@@ -1,10 +1,19 @@
-<form action="https://docs.google.com/forms/d/e/1FAIpQLScLrTxm5vloVe1uqqmvMf-UoSws5IyGcMUTU3Qwd4sYZa5WEg/formResponse" method="POST" target="hidden_iframe" onsubmit="document.getElementById('thankYou').style.display='block'; return true;">
-  <input type="text" name="entry.1440167165" placeholder="First Name"><br>
-  <input type="text" name="entry.1571461235" placeholder="Last Name"><br>
-  <input type="email" name="entry.1202421406" placeholder="Email"><br>
-  <textarea name="entry.1078669474" placeholder="Additional Info"></textarea><br>
+<form action="https://docs.google.com/forms/d/e/1FAIpQLScLrTxm5vloVe1uqqmvMf-UoSws5IyGcMUTU3Qwd4sYZa5WEg/formResponse" method="POST" target="hidden_iframe" onsubmit="showThankYou(); return true;">
+  <input type="text" name="entry.1440167165" placeholder="First Name" required><br>
+  <input type="text" name="entry.1571461235" placeholder="Last Name" required><br>
+  <input type="email" name="entry.1202421406" placeholder="Email" required><br>
+  <textarea name="entry.1078669474" placeholder="Additional Info" required></textarea><br>
   <button type="submit">Submit</button>
 </form>
 
 <iframe name="hidden_iframe" style="display:none;"></iframe>
-<div id="thankYou" style="display:none;">Thanks!</div>
+<div id="thankYou" style="display:none;">
+  <h3>Submission recorded. Thank you!</h3>
+</div>
+
+<script>
+  function showThankYou() {
+    document.querySelector('form').style.display = 'none';
+    document.getElementById('thankYou').style.display = 'block';
+  }
+</script>
